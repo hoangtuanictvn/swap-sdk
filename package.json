@@ -4,7 +4,8 @@
     "lint:fix": "prettier */*.js \"*/**/*{.js,.ts}\" -w",
     "lint": "prettier */*.js \"*/**/*{.js,.ts}\" --check",
     "swap": "yarn ts-node app/raydium-swap.ts",
-    "cswap": "yarn ts-node app/custom-swap.ts"
+    "cswap": "yarn ts-node app/custom-swap.ts",
+    "cswap-v2": "yarn ts-node app/custom-swap-v2.ts"
   },
   "dependencies": {
     "@coral-xyz/anchor": "^0.30.1",
