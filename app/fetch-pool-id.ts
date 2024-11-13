@@ -32,8 +32,6 @@ export async function getPoolID(baseTokenAddress: string): Promise<string | null
             ],
         });
 
-        console.log(baseAccounts)
-
         if (baseAccounts.length > 0) {
             const { pubkey } = baseAccounts[0];
             return pubkey.toString();

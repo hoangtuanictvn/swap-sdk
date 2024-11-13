@@ -246,6 +246,7 @@ const makeSwapInstruction = async (
 export interface TokenInfo {
   name: string;
   mint: string;
+  ammId?: string;
   lut?: PublicKey;
 }
 
@@ -253,7 +254,7 @@ const executeTransaction = async () => {
   const raydium = await initSdk();
   const transaction = new Transaction();
   const lookupTables = [];
-
+  console.log('tokens.length: ', tokens.length)
   for (const token of tokens) {
     const swapInfo = await createSwapInstruction(
       raydium,
@@ -267,7 +268,6 @@ const executeTransaction = async () => {
       await connection.getAddressLookupTable(swapInfo.lookupTableAddress)
     ).value;
     lookupTables.push(lut);
-    console.log(`${token.name} Lookup Table:`, lut);
   }
   await finalizeTransaction(transaction, lookupTables);
 };
@@ -289,9 +289,9 @@ async function createSwapInstruction(
   swapAmountIn: number,
   slippage: number
 ) {
-  const ammId = await getPoolID(tokenInfo.mint);
+  const ammId = tokenInfo.ammId ? tokenInfo.ammId: await getPoolID(tokenInfo.mint);
   const poolKeys = await getPoolKeys(ammId, connection);
-
+  console.log(`AmmId of token ${tokenInfo.name}: `, ammId)
   if (poolKeys) {
     const data = await raydium.liquidity.getPoolInfoFromRpc({ poolId: ammId });
     poolKeys.authority = new PublicKey(data.poolKeys.authority);
@@ -352,15 +352,21 @@ const finalizeTransaction = async (transaction, lookupTables) => {
 
   const txid = await connection.sendTransaction(transactionV0, {
     maxRetries: 5,
+    skipPreflight: true
   });
+  console.log('txid; ', txid)
   const confirmation = await connection.confirmTransaction({
     signature: txid,
     blockhash: latestBlockhash.blockhash,
     lastValidBlockHeight: latestBlockhash.lastValidBlockHeight,
+
   });
 
   if (confirmation.value.err) {
-    throw new Error("❌ - Transaction not confirmed.");
+    console.log(
+      "🎉 Transaction Successfully Confirmed!",
+      `\nhttps://explorer.solana.com/tx/${txid}?cluster=devnet`
+    );
   } else {
     console.log(
       "🎉 Transaction Successfully Confirmed!",

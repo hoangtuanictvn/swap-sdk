@@ -4,8 +4,9 @@
 
 - How we can buy a bulk of Solana token via Raydium?
   - Lets see in the custom-swap.ts example, its figure out how we can buy a bulk of tokens.
-  - At this point, we just buy 10 tokens by using on address lookup tables.
-  - You can check the success TX out there: https://explorer.solana.com/tx/2uNkznSfLk1XMUYwq5f29ycXBbKRVTN5CoVQy9dQupLmVYzXQRJx28aQhFFaVYe1QJPcbN8iAonfrD8V3rXvVWwE?cluster=devnet(I think can can buy more than 10 tokens but it's little hard to find token on Raydium pool)
+  - At this point, we just buy 11 tokens by using on address lookup tables.
+  - You can check the success TX out there: https://explorer.solana.com/tx/N1xKferoQzDQSfnpd7cmNwWekBXWVWbjo8f6qNFFpMtFGyNb3MzyFTJrrL5uuGo9iMy7dtm1mVD3XQFk4MDJv2t?cluster=devnet
+  - Failed when buy 12 tokens.
 
 ### How it work
 - We store account address in Lookup Table for each token so instead of using 32 bytes for addresses now it only use 1 byte for index in Lookup table account
