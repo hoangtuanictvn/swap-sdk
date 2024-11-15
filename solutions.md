@@ -25,3 +25,18 @@ Based on the report at [fully-report.md](./fully-report.md) we can extract 2 pro
 - If user sucess to buy the desired amount in a deadline of the time or ratio, we will process to support user can mint the index fund and close the temporary vault, send token to the main vault
 
 ![image](./images/spacebar-usII.drawio.png)
+
+
+Problems:
+- What problem if we rebalance during the user's process
+
+Next actions:
+- Admin buy the index token -> optimize for a prelookup table
+
+-----
+30 lp pool, each pool have one type meme
+-----
+user request to buy index fund -> transfer the meme -> vault with buyed ratio
+-> we get SOL to our vault -> mint index token
+------
+- Share the fees for the depositer
