@@ -1,25 +1,30 @@
 Arguments: 
-  /Users/tuanhoang/.nvm/versions/node/v21.7.1/bin/node /Users/tuanhoang/.yarn/bin/yarn.js cswap
+  /Users/pluto/.nvm/versions/node/v18.18.0/bin/node /usr/local/bin/yarn add httparty
 
 PATH: 
-  /Users/tuanhoang/.gvm/bin:/Users/tuanhoang/.local/share/solana/install/active_release/bin:/Users/tuanhoang/.krew/bin:/Users/tuanhoang/Library/pnpm:/opt/homebrew/opt/libpq/bin:/Users/tuanhoang/.rbenv/shims:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/tuanhoang/.tiup/bin:/Users/tuanhoang/.yarn/bin:/Users/tuanhoang/.config/yarn/global/node_modules/.bin:/Users/tuanhoang/.nvm/versions/node/v21.7.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Library/Apple/usr/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Users/tuanhoang/.cargo/bin:/Users/tuanhoang/go/bin:/Users/tuanhoang/depot_tools
+  /Users/pluto/.bun/bin:/Users/pluto/util/google-cloud-sdk/bin:/Users/pluto/.nvm/versions/node/v18.18.0/bin:/Users/pluto/.local/share/solana/install/active_release/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/usr/local/share/dotnet:~/.dotnet/tools:/Users/pluto/Library/pnpm:/Users/pluto/.bun/bin:/Users/pluto/util/google-cloud-sdk/bin:/Users/pluto/.nvm/versions/node/v18.18.0/bin:/Users/pluto/.local/share/solana/install/active_release/bin:/Users/pluto/.cargo/bin:/Users/pluto/.foundry/bin:/Users/pluto/.foundry/bin
 
 Yarn version: 
-  1.22.18
+  1.22.19
 
 Node version: 
-  21.7.1
+  18.18.0
 
 Platform: 
   darwin arm64
 
 Trace: 
-  SyntaxError: /Users/tuanhoang/Downloads/swap-sdk/package.json: Expected ',' or '}' after property value in JSON at position 205 (line 7 column 5)
-      at JSON.parse (<anonymous>)
-      at /Users/tuanhoang/.yarn/lib/cli.js:1625:59
-      at Generator.next (<anonymous>)
-      at step (/Users/tuanhoang/.yarn/lib/cli.js:310:30)
-      at /Users/tuanhoang/.yarn/lib/cli.js:321:13
+  Error: https://registry.yarnpkg.com/httparty: Not found
+      at params.callback [as _callback] (/usr/local/lib/node_modules/yarn/lib/cli.js:66145:18)
+      at self.callback (/usr/local/lib/node_modules/yarn/lib/cli.js:140890:22)
+      at Request.emit (node:events:517:28)
+      at Request.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:141862:10)
+      at Request.emit (node:events:517:28)
+      at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:141784:12)
+      at Object.onceWrapper (node:events:631:28)
+      at IncomingMessage.emit (node:events:529:35)
+      at endReadableNT (node:internal/streams/readable:1368:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
 
 npm manifest: 
   {
@@ -27,8 +32,10 @@ npm manifest:
     "scripts": {
       "lint:fix": "prettier */*.js \"*/**/*{.js,.ts}\" -w",
       "lint": "prettier */*.js \"*/**/*{.js,.ts}\" --check",
-      "swap": "yarn ts-node app/raydium-swap.ts"
-      "cswap": "yarn ts-node app/custom-swap.ts"
+      "swap": "yarn ts-node app/raydium-swap.ts",
+      "cswap": "yarn ts-node app/custom-swap.ts",
+      "cswap-v2": "yarn ts-node app/custom-swap-v2.ts",
+      "getTx": "yarn ts-node app/getAllTx"
     },
     "dependencies": {
       "@coral-xyz/anchor": "^0.30.1",
@@ -41,6 +48,7 @@ npm manifest:
       "@types/bn.js": "^5.1.0",
       "@types/chai": "^4.3.0",
       "@types/mocha": "^9.0.0",
+      "@types/node": "^22.9.1",
       "chai": "^4.3.4",
       "mocha": "^9.0.3",
       "prettier": "^2.6.2",
@@ -591,6 +599,13 @@ Lockfile:
     version "12.20.55"
     resolved "https://registry.yarnpkg.com/@types/node/-/node-12.20.55.tgz#c329cbd434c42164f846b909bd6f85b5537f6240"
     integrity sha512-J8xLz7q2OFulZ2cyGTLE1TbbZcjpno7FaN6zdJNrgAdrJ+DZzh/uFR6YrTb4C+nXakvud8Q4+rbhoIWlYQbUFQ==
+  
+  "@types/node@^22.9.1":
+    version "22.9.1"
+    resolved "https://registry.yarnpkg.com/@types/node/-/node-22.9.1.tgz#bdf91c36e0e7ecfb7257b2d75bf1b206b308ca71"
+    integrity sha512-p8Yy/8sw1caA8CdRIQBG5tiLHmxtQKObCijiAa9Ez+d4+PRffM4054xbju0msf+cvhJpnFEeNjxmVT/0ipktrg==
+    dependencies:
+      undici-types "~6.19.8"
   
   "@types/uuid@^8.3.4":
     version "8.3.4"
@@ -1813,6 +1828,7 @@ Lockfile:
     integrity sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==
   
   "string-width-cjs@npm:string-width@^4.2.0", string-width@^4.1.0, string-width@^4.2.0:
+    name string-width-cjs
     version "4.2.3"
     resolved "https://registry.yarnpkg.com/string-width/-/string-width-4.2.3.tgz#269c7117d27b05ad2e536830a8ec895ef9c6d010"
     integrity sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==
@@ -1831,6 +1847,7 @@ Lockfile:
       strip-ansi "^7.0.1"
   
   "strip-ansi-cjs@npm:strip-ansi@^6.0.1", strip-ansi@^6.0.0, strip-ansi@^6.0.1:
+    name strip-ansi-cjs
     version "6.0.1"
     resolved "https://registry.yarnpkg.com/strip-ansi/-/strip-ansi-6.0.1.tgz#9e26c63d30f53443e9489495b2105d37b67a85d9"
     integrity sha512-Y38VPSHcqkFrCpFnQ9vuSXmquuv5oXOKpGeT6aGrr3o3Gc9AlVa6JBfUSOCnbxGGZF+/0ooI7KrPuUSztUdU5A==
@@ -2103,6 +2120,7 @@ Lockfile:
     integrity sha512-Rsk5qQHJ9eowMH28Jwhe8HEbmdYDX4lwoMWshiCXugjtHqMD9ZbiqSDLxcsfdqsETPzVUtX5s1Z5kStiIM6l4A==
   
   "wrap-ansi-cjs@npm:wrap-ansi@^7.0.0", wrap-ansi@^7.0.0:
+    name wrap-ansi-cjs
     version "7.0.0"
     resolved "https://registry.yarnpkg.com/wrap-ansi/-/wrap-ansi-7.0.0.tgz#67e145cff510a6a6984bdf1152911d69d2eb9e43"
     integrity sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==

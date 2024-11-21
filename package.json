@@ -6,7 +6,7 @@
     "swap": "yarn ts-node app/raydium-swap.ts",
     "cswap": "yarn ts-node app/custom-swap.ts",
     "cswap-v2": "yarn ts-node app/custom-swap-v2.ts",
-    "getTx" : "yarn ts-node app/getAllTx"
+    "getTx": "yarn ts-node app/getAllTx"
   },
   "dependencies": {
     "@coral-xyz/anchor": "^0.30.1",
@@ -19,6 +19,7 @@
     "@types/bn.js": "^5.1.0",
     "@types/chai": "^4.3.0",
     "@types/mocha": "^9.0.0",
+    "@types/node": "^22.9.1",
     "chai": "^4.3.4",
     "mocha": "^9.0.3",
     "prettier": "^2.6.2",
